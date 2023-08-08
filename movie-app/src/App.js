@@ -47,6 +47,17 @@ function App() {
     }
   }
 
+  const getReviews = async(movieId) =>{
+    try {
+     const response = await api.get(`/api/v1/reviews/${movieId}`) 
+     console.log(response.data);  
+    } catch (error) {
+      console.log(error);
+    }
+   }
+
+  
+
  useEffect(() =>{
   getAllMovies();
  },[])
@@ -58,7 +69,7 @@ function App() {
       <Route path='/' element={<Layout/>}>
         <Route path='/' element={<Home movies={movies}/>} ></Route>
         <Route path='/Trailer/:ytTrailerId' element ={<Trailer></Trailer> } >  </Route>
-        <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews ={reviews} setReviews = {setReviews} />}></Route>
+        <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews ={reviews} setReviews = {setReviews} getReviews={getReviews} />}></Route>
       </Route>
      </Routes>
     </div>

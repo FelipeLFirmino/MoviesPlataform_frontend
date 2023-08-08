@@ -5,7 +5,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 import ReviewForm from '../reviewform/ReviewForm';
 import React from 'react';
 
-const Reviews = ({getMovieData,reviews,movie,setReviews}) => {
+const Reviews = ({getMovieData,reviews,movie,setReviews,getReviews}) => {
     
   let paramns = useParams();
   const revText = useRef();
@@ -14,6 +14,8 @@ const Reviews = ({getMovieData,reviews,movie,setReviews}) => {
 
   useEffect(() => {
     getMovieData(MovieId);
+    //to do: function is working, data is appearing on the log, it needs implementation
+    getReviews(MovieId);
   },[])
 
   const addReview = async(e) =>{
@@ -35,8 +37,7 @@ const Reviews = ({getMovieData,reviews,movie,setReviews}) => {
     }
   }
 
-
-
+ 
 
     return(
         <Container>
@@ -67,6 +68,7 @@ const Reviews = ({getMovieData,reviews,movie,setReviews}) => {
                  {
                     //maps all the reviews and puts their body in this structure, one by one
                     reviews?.map((rev)=>{
+                        
                      return(
                         <div>
                             <Row>
