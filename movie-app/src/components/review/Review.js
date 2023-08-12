@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from "react";
 import api from "../../api/axiosConfig";
 import { useParams } from "react-router-dom";
@@ -88,5 +89,6 @@ const Reviews = ({ getMovieData, reviews, movie, setReviews, getReviews }) => {
     </Container>
   );
 };
+
 
 export default Reviews;

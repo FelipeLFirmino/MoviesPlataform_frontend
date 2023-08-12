@@ -37,6 +37,7 @@ function App() {
     try {
       const response = await api.get(`/api/v1/movies/${movieId}`)
       const singleMovie = response.data;
+
       setMovie(singleMovie);
       
 
