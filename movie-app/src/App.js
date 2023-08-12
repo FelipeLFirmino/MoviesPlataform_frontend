@@ -8,7 +8,7 @@ import Home from './components/homepage/Home';
 import Header from './components/header/header';
 import Trailer from './components/trailer/Trailer';
 import Reviews from './components/review/Review';
-
+import NotFound from './components/notfound/NotFound';
 
 
 function App() {
@@ -69,6 +69,7 @@ function App() {
         <Route path='/' element={<Home movies={movies}/>} ></Route>
         <Route path='/Trailer/:ytTrailerId' element ={<Trailer></Trailer> } >  </Route>
         <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews ={reviews} setReviews = {setReviews} getReviews={getReviews} />}></Route>
+        <Route path="*" element = {<NotFound/>}></Route>
       </Route>
      </Routes>
     </div>
