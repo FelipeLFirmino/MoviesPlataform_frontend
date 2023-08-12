@@ -8,7 +8,7 @@ import Home from './components/homepage/Home';
 import Header from './components/header/header';
 import Trailer from './components/trailer/Trailer';
 import Reviews from './components/review/Review';
-
+import NotFound from './components/notfound/NotFound';
 
 
 function App() {
@@ -37,15 +37,26 @@ function App() {
     try {
       const response = await api.get(`/api/v1/movies/${movieId}`)
       const singleMovie = response.data;
-      
+
       setMovie(singleMovie);
-      setReviews(singleMovie.reviewIds);
+      
 
 
     } catch (error) {
       console.log(error);
     }
   }
+
+  const getReviews = async(movieId) =>{
+    try {
+     const response = await api.get(`/api/v1/reviews/${movieId}`)  
+     setReviews(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+   }
+
+  
 
  useEffect(() =>{
   getAllMovies();
@@ -58,7 +69,8 @@ function App() {
       <Route path='/' element={<Layout/>}>
         <Route path='/' element={<Home movies={movies}/>} ></Route>
         <Route path='/Trailer/:ytTrailerId' element ={<Trailer></Trailer> } >  </Route>
-        <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews ={reviews} setReviews = {setReviews} />}></Route>
+        <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews ={reviews} setReviews = {setReviews} getReviews={getReviews} />}></Route>
+        <Route path="*" element = {<NotFound/>}></Route>
       </Route>
      </Routes>
     </div>

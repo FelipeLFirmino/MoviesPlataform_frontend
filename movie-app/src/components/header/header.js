@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { faVideoSlash } from "@fortawesome/free-solid-svg-icons";
 import Container from "react-bootstrap/Container";
 import { Nav } from "react-bootstrap";
-import NavLink from "react-bootstrap/NavLink";
+import {NavLink} from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 
 
@@ -24,7 +24,7 @@ const Header = () => {
                         style={{maxHeight: '100px'}}
                         navbarScroll
                     >
-                    <NavLink className ="nav-link" to="/">Home</NavLink>
+                    <NavLink className ="nav-link" to="/" >Home</NavLink>
                     <NavLink className ="nav-link" to="/watchList">Watch List</NavLink>      
                 </Nav>
                 <Button variant="outline-info" className="me-2">Login</Button>
